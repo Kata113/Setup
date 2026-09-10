@@ -4,7 +4,7 @@ One-command setup script for Arch Linux installation,I created this repository f
 
 🚀 Install
 
-curl -fsSL https://raw.githubusercontent.com/USERNAME/setup/main/install.sh | bash
+``curl -fsSL https://raw.githubusercontent.com/kata113/setup/main/install.sh | bash``
 
 The script will automatically:
 
