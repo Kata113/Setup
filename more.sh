@@ -52,4 +52,30 @@ if [[ -f "$BINDS" ]]; then
     sed -i '/SUPER *+ *SPACE.*launcher/d' "$BINDS"
 
     # Remove an old HOME custom binding
-    sed -i '/
+    sed -i '/HOME.*walker/d' "$BINDS"
+
+    cat >> "$BINDS" <<'EOF'
+
+-- Custom keybinds
+-- Super + Space is reserved for keyboard layout switching
+hl.unbind("SUPER + SPACE")
+
+-- Home opens application launcher
+hl.bind("HOME", hl.dsp.exec_cmd("walker"))
+EOF
+else
+    cat > "$BINDS" <<'EOF'
+-- Custom keybinds
+hl.unbind("SUPER + SPACE")
+hl.bind("HOME", hl.dsp.exec_cmd("walker"))
+EOF
+fi
+
+echo "Hyprland configuration updated."
+echo "Backups created with timestamp: $timestamp"
+echo
+echo "Keyboard: Super + Space = English/Thai"
+echo "Launcher: Home = Walker"
+
+# Reload Hyprland
+hyprctl reload
